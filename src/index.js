@@ -4,22 +4,53 @@ import foodTemplate from './menu-template.hbs';
 //Add theme switcher
 const body = document.querySelector('body');
 const checkbox = document.querySelector('#theme-switch-toggle');
-const switcher = addEventListener('input', switchDarkTheme);
+const switcher = addEventListener('input', switchTheme);
 
 body.classList.toggle('light-theme');
 
-function switchDarkTheme() {
-  if (body.classList.contains('light-theme')) {
-    body.classList.remove('light-theme');
-    body.classList.add('dark-theme');
+function defaultTheme() {
+  if (localStorage.Theme !== 'dark-theme') {
+    setLightTheme();
+    setLocalStorageLight();
+    checkbox.checked = false;
   } else {
-    body.classList.remove('dark-theme');
-    body.classList.add('light-theme');
+    setDarkTheme();
+    setLocalStorageDark();
+    checkbox.checked = true;
   }
 }
 
-//Work in progress...
-// localStorage.setItem('theme', switchDarkTheme);
+defaultTheme();
+
+function switchTheme() {
+  if (localStorage.Theme === 'light-theme') {
+    setDarkTheme();
+    setLocalStorageDark();
+  } else if (localStorage.Theme === 'dark-theme') {
+    setLightTheme();
+    setLocalStorageLight();
+  }
+}
+
+function setDarkTheme() {
+  body.classList.remove('light-theme');
+  body.classList.add('dark-theme');
+}
+
+function setLightTheme() {
+  body.classList.remove('dark-theme');
+  body.classList.add('light-theme');
+}
+
+function setLocalStorageLight() {
+  localStorage.removeItem('Theme');
+  localStorage.setItem('Theme', 'light-theme');
+}
+
+function setLocalStorageDark() {
+  localStorage.removeItem('Theme');
+  localStorage.setItem('Theme', 'dark-theme');
+}
 
 //Add food marup in html
 const menuMarkup = document.querySelector('.js-menu');
