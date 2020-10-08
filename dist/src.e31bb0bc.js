@@ -2342,6 +2342,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 //Add theme switcher
 var body = document.querySelector('body');
+var checkbox = document.querySelector('#theme-switch-toggle');
 var switcher = addEventListener('input', switchDarkTheme);
 body.classList.toggle('light-theme');
 
@@ -2353,11 +2354,10 @@ function switchDarkTheme() {
     body.classList.remove('dark-theme');
     body.classList.add('light-theme');
   }
-}
-
-console.log(body.classList.value); //Work in progress...
-// localStorage.setItem('theme', );
+} //Work in progress...
+// localStorage.setItem('theme', switchDarkTheme);
 //Add food marup in html
+
 
 var menuMarkup = document.querySelector('.js-menu');
 var markup = (0, _menuTemplate.default)(_menu.default);
@@ -2390,7 +2390,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59621" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62235" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

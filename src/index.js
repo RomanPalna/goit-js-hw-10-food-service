@@ -3,6 +3,7 @@ import foodTemplate from './menu-template.hbs';
 
 //Add theme switcher
 const body = document.querySelector('body');
+const checkbox = document.querySelector('#theme-switch-toggle');
 const switcher = addEventListener('input', switchDarkTheme);
 
 body.classList.toggle('light-theme');
@@ -17,10 +18,8 @@ function switchDarkTheme() {
   }
 }
 
-console.log(body.classList.value);
-
 //Work in progress...
-// localStorage.setItem('theme', );
+// localStorage.setItem('theme', switchDarkTheme);
 
 //Add food marup in html
 const menuMarkup = document.querySelector('.js-menu');
